@@ -45,7 +45,7 @@ function lancerJeu(){
 
 }
 
-lancerJeu();
+
 
 
 
