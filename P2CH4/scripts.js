@@ -14,9 +14,11 @@ function choisirPhrasesOuMots(){
     while(choix !== "mots" && choix !== "phrases"){
         choix = prompt("entrez ('mots' ou 'phrases')")
     }
+
+    return choix;
 }
 
-choisirPhrasesOuMots();
+
 
 
 
