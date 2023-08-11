@@ -23,7 +23,6 @@ function choisirPhrasesOuMots(){
 }
 
 // lancer boucle de jeu
-
 function lancerBoucleDeJeu(listeProposes){
     for(let index = 0 ; index < listeProposes.length ; index++){
         let motUtilisateur = prompt("Tapez ici: " + listeProposes[index]);
@@ -33,6 +32,25 @@ function lancerBoucleDeJeu(listeProposes){
         
     }
 }
+
+// lancer jeu
+
+function lancerJeu(){
+    let nbMotsProposes = 0;
+    choisirPhrasesOuMots();
+    if(choisirPhrasesOuMots() === "mots"){
+        nbMotsProposes++;
+        lancerBoucleDeJeu(listeMots)
+    }else{
+        nbMotsProposes++;
+        lancerBoucleDeJeu(listePhrases)
+    }
+
+    afficherResultat(score,nbMotsProposes)
+
+}
+
+lancerJeu();
 
 
 
