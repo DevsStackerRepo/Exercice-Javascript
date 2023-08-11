@@ -2,10 +2,6 @@
 const listeMots = ["Cachalot","Pétunia","Serviette"];
 const listePhrases = ["Pas de panque !","La vie, et tout le reste", "Merci pour le poisson"];
 
-// le compteur ou score initial du jeu
-let score = 0;
-
-
 // afficher le resultat du jeu
 function afficherResultat(score,nbMotsProposes){
     console.log("votre score est de " + score + " sur " + nbMotsProposes);
@@ -24,6 +20,7 @@ function choisirPhrasesOuMots(){
 
 // lancer boucle de jeu
 function lancerBoucleDeJeu(listeProposes){
+    let score = 0;
     for(let index = 0 ; index < listeProposes.length ; index++){
         let motUtilisateur = prompt("Tapez ici: " + listeProposes[index]);
         if(motUtilisateur === listeProposes[index]){
@@ -31,19 +28,20 @@ function lancerBoucleDeJeu(listeProposes){
         }
         
     }
+    return score;
 }
 
 // lancer jeu
-
 function lancerJeu(){
+    let score = 0;
     let nbMotsProposes = 0;
     choisirPhrasesOuMots();
     if(choisirPhrasesOuMots() === "mots"){
-        nbMotsProposes++;
-        lancerBoucleDeJeu(listeMots)
+        score = lancerBoucleDeJeu(listeMots);
+        nbMotsProposes = listeMots.length
     }else{
-        nbMotsProposes++;
-        lancerBoucleDeJeu(listePhrases)
+        score = lancerBoucleDeJeu(listePhrases);
+        nbMotsProposes = listePhrases.length;
     }
 
     afficherResultat(score,nbMotsProposes)
