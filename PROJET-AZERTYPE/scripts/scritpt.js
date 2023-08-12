@@ -1,7 +1,11 @@
 
 // afficher le resultat du jeu
 function afficherResultat(score,nbMotsProposes){
-    console.log("votre score est de " + score + " sur " + nbMotsProposes);
+    let zoneScoreSpan = document.querySelector(".zoneScore span");
+    let afficherScore = `
+        ${score} | ${nbMotsProposes}
+    `
+    zoneScoreSpan.innerHTML = afficherScore;
 }
 
 // choisir entre la liste de mots ou phrases
