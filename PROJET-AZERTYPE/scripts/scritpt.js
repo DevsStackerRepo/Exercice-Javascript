@@ -13,8 +13,13 @@ let zoneProposition = document.querySelector(".zoneProposition");
 zoneProposition.innerText = proposition;
 
 }
+function afficherEmail(nom, email, score) {
+    let mailto = `mailto:${email}?subject=Partage du score Azertype&body=Salut, je suis ${nom} et je vais de réaliser le score ${score} sur le site d'Azertype !`
+    location.href = mailto
+}
 // lancer jeu
 function lancerJeu(){
+    initAddEventListenerPopup()
     let score = 0;
     let i = 0;
     let listeProposition = listeMots;
@@ -43,18 +48,27 @@ let listesBtnRadio = document.querySelectorAll(".optionSource input");
 
 for(let index = 0 ; index < listesBtnRadio.length ; index++){
     listesBtnRadio[index].addEventListener("change",(event) => {
-
         if(event.target.value === "1"){
             listeProposition = listeMots;
         }else{
             listeProposition = listePhrases
-            
         }
         afficherProposition(listeProposition[i])
-    }
-
-    )
+    })
 }
+
+let form = document.querySelector("form");
+form.addEventListener("submit",(event) => {
+    event.preventDefault();
+    let baliseNom = document.getElementById("nom");
+    let nom = baliseNom.value;
+    let baliseEmail = document.getElementById("email");
+    let email = baliseEmail.value;
+    let scoreEmail = `${score} / ${i}`;
+    afficherEmail(nom,email,scoreEmail);
+
+    
+})
     afficherResultat(score,i);
 }
 
